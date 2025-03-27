@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  consumed_at: 2025-03-27 20:46:02
+  symptom_occurence: false
+  symptom_severity: MyString
+  symptom_timing: MyString
+  beverage: one
+  symptom: one
+  user: one
+
+two:
+  consumed_at: 2025-03-27 20:46:02
+  symptom_occurence: false
+  symptom_severity: MyString
+  symptom_timing: MyString
+  beverage: two
+  symptom: two
+  user: two
