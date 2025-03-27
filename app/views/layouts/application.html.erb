@@ -23,9 +23,9 @@
   </head>
 
   <body>
+       <%= render "shared/navbar" %>
     <main class="container mx-auto mt-28 px-5 ">
       <%= yield %>
-      <%= turbo_frame_tag "modal" %>
     </main>
   </body>
 </html>

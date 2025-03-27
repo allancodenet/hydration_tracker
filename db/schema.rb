@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_03_27_202553) do
+ActiveRecord::Schema[8.0].define(version: 2025_03_27_232545) do
   create_table "additives", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -68,8 +68,14 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_27_202553) do
     t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "additive_id"
+    t.integer "quantity_id", null: false
+    t.integer "temperature_id", null: false
+    t.index ["additive_id"], name: "index_trackers_on_additive_id"
     t.index ["beverage_id"], name: "index_trackers_on_beverage_id"
+    t.index ["quantity_id"], name: "index_trackers_on_quantity_id"
     t.index ["symptom_id"], name: "index_trackers_on_symptom_id"
+    t.index ["temperature_id"], name: "index_trackers_on_temperature_id"
     t.index ["user_id"], name: "index_trackers_on_user_id"
   end
 
@@ -86,7 +92,10 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_27_202553) do
   end
 
   add_foreign_key "beverages", "beverage_categories"
+  add_foreign_key "trackers", "additives"
   add_foreign_key "trackers", "beverages"
+  add_foreign_key "trackers", "quantities"
   add_foreign_key "trackers", "symptoms"
+  add_foreign_key "trackers", "temperatures"
   add_foreign_key "trackers", "users"
 end

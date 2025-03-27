@@ -3,9 +3,10 @@ class Tracker < ApplicationRecord
   belongs_to :symptom
   belongs_to :user
   belongs_to :additive
-  has_one :quantity
-  has_one :temperature
-  accepts_nested_attributes_for :quantity, :temperature, :additive
+  belongs_to :quantity
+  belongs_to :temperature
+
+  accepts_nested_attributes_for :quantity, :temperature
   SYMPTOM_SEVERITY = [
     [ "Mild", "mild" ],
     [ "Moderate", "moderate" ],

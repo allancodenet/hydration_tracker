@@ -1,7 +1,7 @@
 class Quantity < ApplicationRecord
-  validates :value, presence: true, numericality: { greater_than: 0 }
+  validates :value, presence: true
   validates :unit_type, presence: true
-  validates :measurement_system, presence: true, inclusion: { in: %w[imperial metric] }
+  # validates :measurement_system, presence: true, inclusion: { in: %w[imperial metric] }
 
   IMPERIAL_UNITS = %w[cup oz]
   METRIC_UNITS = %w[ml l]
