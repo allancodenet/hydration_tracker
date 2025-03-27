@@ -12,4 +12,10 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+  namespace :tracking do
+    resources :beverage_logs, only: [ :new, :create ]
+    resources :symptom_logs, only: [ :new, :create ]
+  end
+
+  resources :trackers, only: [ :show ]
 end
