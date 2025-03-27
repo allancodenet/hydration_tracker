@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  degrees: 9.99
+  scale: MyString
+  description: MyString
+
+two:
+  degrees: 9.99
+  scale: MyString
+  description: MyString
