@@ -16,6 +16,9 @@ Rails.application.routes.draw do
     resources :beverage_logs, only: [ :new, :create ]
     resources :symptom_logs, only: [ :new, :create ]
   end
+  namespace :api do
+    resources :beverages, only: [ :index ]
+  end
 
   resources :trackers, only: [ :show, :index ]
   get "trackers/new"

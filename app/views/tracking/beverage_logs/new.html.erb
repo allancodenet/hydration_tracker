@@ -28,11 +28,17 @@
   </nav>
 
   <div class="bg-gray-100 py-8 px-4 shadow sm:rounded-lg sm:px-10 mt-10">
-    <%= form_with model: @beverage_log, class: "space-y-6" do |f| %>
+    <%= form_with model: @beverage_log, class: "space-y-6", data: {controller: "beverage-category-select"} do |f| %>
+      <div>
+        <%= f.label :beverage_category_id, class: "block text-sm font-medium text-gray-700" %>
+        <div class="mt-1">
+          <%= f.select :beverage_id, Beverage.all.map { |beverage| [beverage.name, beverage.id] }, {},  data: { beverage_category_select_target: "category", action: "beverage-category-select#updateSubcategories"}class: "block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm" %>
+        </div>
+      </div>
       <div>
         <%= f.label :beverage_id, class: "block text-sm font-medium text-gray-700" %>
         <div class="mt-1">
-          <%= f.select :beverage_id, Beverage.all.map { |beverage| [beverage.name, beverage.id] }, {}, class: "block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm" %>
+          <%= f.select :beverage_id, Beverage.all.map { |beverage| [beverage.name, beverage.id] }, {}, data: { beverage_category_select_target: "subCategory"}, class: "block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm" %>
         </div>
       </div>
 
