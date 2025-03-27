@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   end
 
   resources :trackers, only: [ :show, :index ]
+  resources :quantities, only: [ :new, :create, :update ]
   get "trackers/new"
   root "trackers#index"
 end

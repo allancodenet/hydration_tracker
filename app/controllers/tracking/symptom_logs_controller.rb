@@ -1,5 +1,6 @@
 module Tracking
   class SymptomLogsController < ApplicationController
+    before_action :authenticate_user!
     def new
       @symptom_log = SymptomLog.new
     end
@@ -8,7 +9,7 @@ module Tracking
       @symptom_log = SymptomLog.new(symptom_log_params)
       if @symptom_log.valid?
         all_params = symptom_log_params.merge(session[:beverage_log])
-        tracker = Tracker.create!(all_params)
+        tracker = current_user.trackers.create!(all_params)
         session.delete(:beverage_log)
         redirect_to tracker_path(tracker), notice: "Tracker created successfully"
       else

@@ -122,3 +122,47 @@ beverage_categories.each do |category|
 end
 
 puts "Beverage seed data created successfully!"
+
+# Symptoms
+symptoms = [
+  "Bloating",
+  "Discomfort",
+  "Nausea",
+  "Acid Reflux / Heartburn",
+  "Burping / Excess Gas",
+  "Diarrhea / Loose Stools",
+  "Constipation",
+  "Cramping / Abdominal Pain",
+  "Urgency to Poop",
+  "Mucus in Stool",
+  "Fatty / Oily Stools (Steatorrhea)",
+  "Undigested Food in Stool",
+  "Feeling Full / Heavy Stomach",
+  "Dizziness / Lightheadedness",
+  "Headache",
+  "Dry Mouth / Sticky Saliva"
+]
+
+symptoms.each do |symptom_name|
+  Symptom.find_or_create_by!(name: symptom_name)
+end
+
+puts "Symptom seed data created successfully!"
+
+additives = [
+  "Sugar",
+  "Milk",
+  "Creamer",
+  "Lemon",
+  "Lime",
+  "Honey",
+  "Artificial Sweeteners",
+  "Protein Powder",
+  "Electrolyte Powder"
+]
+
+additives.each do |additive_name|
+  Additive.find_or_create_by!(name: additive_name)
+end
+
+puts "Additive seed data created successfully!"

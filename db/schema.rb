@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_03_27_184956) do
+ActiveRecord::Schema[8.0].define(version: 2025_03_27_202553) do
   create_table "additives", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -35,10 +35,11 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_27_184956) do
   end
 
   create_table "quantities", force: :cascade do |t|
-    t.decimal "quantity"
-    t.string "unit"
+    t.decimal "value"
+    t.string "unit_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "measurement_system"
   end
 
   create_table "symptoms", force: :cascade do |t|

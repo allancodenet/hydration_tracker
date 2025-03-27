@@ -43,19 +43,38 @@
           <%= f.select :beverage_id, Beverage.all.map { |beverage| [beverage.name, beverage.id] }, {}, data: { beverage_category_select_target: "subCategory"}, class: "block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm" %>
         </div>
       </div>
-
       <div>
-        <%= f.label :quantity, class: "block text-sm font-medium text-gray-700" %>
+        <%= f.label :additive_id, class: "block text-sm font-medium text-gray-700" %>
         <div class="mt-1">
-          <%= f.text_field :quantity, class: "block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm" %>
+          <%= f.select :additive_id, Additive.all.map { |additive| [additive.name, additive.id] }, {prompt: "Select an additive"}, data: { beverage_category_select_target: "subCategory"}, class: "block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm" %>
         </div>
       </div>
-
+      <span class="text-sm font-medium text-gray-700">Quantity fields</span>
       <div>
-        <%= f.label :temperature, class: "block text-sm font-medium text-gray-700" %>
-        <div class="mt-1">
-          <%= f.text_field :temperature, class: "block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm" %>
-        </div>
+        <%= f.fields_for :quantity do |quantity_fields| %>
+          <%= quantity_fields.label :value, class: "block text-sm font-medium text-gray-700" %>
+          <div class="mt-1">
+            <%= quantity_fields.text_field :value, class: "block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm" %>
+          </div>
+          <%= quantity_fields.label :unit_type, class: "block text-sm font-medium text-gray-700" %>
+          <div class="mt-1">
+            <%= quantity_fields.select :unit_type, Quantity::ALL_UNITS, {prompt: "Select a unit"}, class: "block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm" %>
+          </div>
+        <% end %>
+      </div>
+      <span class="text-sm font-medium text-gray-700">Temperature fields</span>
+      <div>
+        <%= f.fields_for :temperature do |temperature_fields| %>
+          <%= temperature_fields.label :degrees, class: "block text-sm font-medium text-gray-700" %>
+          <div class="mt-1 space-y-2">
+            <%= temperature_fields.range_field :scale,
+                min: 0,
+                max: 100,
+                step: 1,
+                class: "w-full" %>
+  
+          </div>
+        <% end %>
       </div>
 
       <div>

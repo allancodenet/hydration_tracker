@@ -32,21 +32,25 @@
       <div>
         <%= f.label :symptom_id, class: "block text-sm font-medium text-gray-700" %>
         <div class="mt-1">
-          <%= f.select :symptom_id, Symptom.all.map { |symptom| [symptom.name, symptom.id] }, {}, class: "block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm" %>
+          <%= f.select :symptom_id, Symptom.all.map { |symptom| [symptom.name, symptom.id] }, {prompt: "Select a symptom"}, class: "block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm" %>
         </div>
       </div>
 
       <div>
         <%= f.label :symptom_severity, class: "block text-sm font-medium text-gray-700" %>
         <div class="mt-1">
-          <%= f.select :symptom_severity, SymptomLog::SYMPTOM_SEVERITY, {}, class: "block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm" %>
+          <%= f.select :symptom_severity, Tracker::SYMPTOM_SEVERITY, {prompt: "Select a severity"}, class: "block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm" %>
+        </div>
+      </div>
+      <div>
+        <%= f.label :symptom_timing, class: "block text-sm font-medium text-gray-700" %>
+        <div class="mt-1">
+          <%= f.select :symptom_timing, Tracker::SYMPTOM_TIMING, {prompt: "Select a timing"}, class: "block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm" %>
         </div>
       </div>
 
       <div class="flex justify-end">
-        <button type="submit" class="flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
-          Finish
-        </button>
+        <%= f.submit "Finish", data: { turbo_frame: "_top" }, class: "flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2" %>
       </div>
 
       <% if @symptom_log.errors.any? %>
