@@ -17,5 +17,7 @@ Rails.application.routes.draw do
     resources :symptom_logs, only: [ :new, :create ]
   end
 
-  resources :trackers, only: [ :show ]
+  resources :trackers, only: [ :show, :index ]
+  get "trackers/new"
+  root "trackers#index"
 end

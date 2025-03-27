@@ -1,0 +1,29 @@
+<%= turbo_frame_tag "tracker_form" do %>
+  <div class="overflow-hidden bg-white shadow sm:rounded-lg">
+    <div class="px-4 py-5 sm:px-6">
+      <h3 class="text-base font-semibold leading-6 text-gray-900">Tracker Information</h3>
+      <p class="mt-1 max-w-2xl text-sm text-gray-500">Beverage and symptom information.</p>
+    </div>
+    <div class="border-t border-gray-200 px-4 py-5 sm:p-0">
+      <dl class="sm:divide-y sm:divide-gray-200">
+        <div class="py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:py-5 sm:px-6">
+          <dt class="text-sm font-medium text-gray-500">Beverage</dt>
+          <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0"><%= @tracker.beverage.name %></dd>
+        </div>
+        <div class="py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:py-5 sm:px-6">
+          <dt class="text-sm font-medium text-gray-500">Symptom</dt>
+          <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0"><%= @tracker.symptom.name %></dd>
+        </div>
+        <div class="py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:py-5 sm:px-6">
+          <dt class="text-sm font-medium text-gray-500">Symptom Severity</dt>
+          <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0"><%= @tracker.symptom_severity %></dd>
+        </div>
+        <div class="py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:py-5 sm:px-6">
+          <dt class="text-sm font-medium text-gray-500">Symptom Timing</dt>
+          <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0"><%= @tracker.symptom_timing %></dd>
+        </div>
+        
+      </dl>
+    </div>
+  </div>
+<% end %>
