@@ -10,8 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_03_27_174602) do
+ActiveRecord::Schema[8.0].define(version: 2025_03_27_184956) do
   create_table "additives", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "beverage_categories", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -24,6 +30,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_27_174602) do
     t.decimal "calories_per_100ml"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "beverage_category_id", null: false
+    t.index ["beverage_category_id"], name: "index_beverages_on_beverage_category_id"
   end
 
   create_table "quantities", force: :cascade do |t|
@@ -76,6 +84,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_27_174602) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "beverages", "beverage_categories"
   add_foreign_key "trackers", "beverages"
   add_foreign_key "trackers", "symptoms"
   add_foreign_key "trackers", "users"
