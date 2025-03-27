@@ -32,7 +32,9 @@
       <div>
         <%= f.label :beverage_category_id, class: "block text-sm font-medium text-gray-700" %>
         <div class="mt-1">
-          <%= f.select :beverage_id, Beverage.all.map { |beverage| [beverage.name, beverage.id] }, {},  data: { beverage_category_select_target: "category", action: "beverage-category-select#updateSubcategories"}class: "block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm" %>
+          <%= f.select :beverage_id, BeverageCategory.all.map { |beverage_category| [beverage_category.name, beverage_category.id] }, {},  
+          data: { beverage_category_select_target: "category", action: "beverage-category-select#updateSubcategories", beverage_category_select_url_param: api_beverages_path}, 
+          class: "block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm" %>
         </div>
       </div>
       <div>

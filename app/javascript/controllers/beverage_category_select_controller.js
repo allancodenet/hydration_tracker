@@ -10,10 +10,10 @@ export default class extends Controller {
     if (category) {
       const response = await fetch(`${url}?beverage_category_id=${category}`)
       const data = await response.json()
-      data.forEach(subcategory => {
+      data.forEach(item  => {
         const option = document.createElement("option")
-        option.value = subcategory.id
-        option.textContent = subcategory.name
+        option.value = item.id
+        option.textContent = item.name
         subcategory.appendChild(option)
       })
     }
