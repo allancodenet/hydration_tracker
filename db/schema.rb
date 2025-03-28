@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_03_27_232545) do
+ActiveRecord::Schema[8.0].define(version: 2025_03_28_001052) do
   create_table "additives", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -40,6 +40,14 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_27_232545) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "measurement_system"
+  end
+
+  create_table "recommendations", force: :cascade do |t|
+    t.text "content"
+    t.integer "tracker_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["tracker_id"], name: "index_recommendations_on_tracker_id"
   end
 
   create_table "symptoms", force: :cascade do |t|
@@ -92,6 +100,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_27_232545) do
   end
 
   add_foreign_key "beverages", "beverage_categories"
+  add_foreign_key "recommendations", "trackers"
   add_foreign_key "trackers", "additives"
   add_foreign_key "trackers", "beverages"
   add_foreign_key "trackers", "quantities"

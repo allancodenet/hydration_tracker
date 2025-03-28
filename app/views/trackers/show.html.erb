@@ -26,6 +26,22 @@
           <dt class="text-sm font-medium text-gray-500">Symptom Timing</dt>
           <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0"><%= @tracker.symptom_timing %></dd>
         </div>
+
+        <% if @tracker.recommendations.any? %>
+          <div class="py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:py-5 sm:px-6">
+            <dt class="text-sm font-medium text-gray-500">Recommendations</dt>
+            <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
+              <% @tracker.recommendations.each do |recommendation| %>
+                <div class="flex items-start mb-2">
+                  <svg class="h-5 w-5 text-blue-500 mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <%= recommendation.content %>
+                </div>
+              <% end %>
+            </dd>
+          </div>
+        <% end %>
         
       </dl>
     </div>

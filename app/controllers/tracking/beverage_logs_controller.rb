@@ -9,7 +9,6 @@ module Tracking
       quantity = Quantity.create!(value: params[:tracking_beverage_log][:quantity][:value], unit_type: params[:tracking_beverage_log][:quantity][:unit_type], measurement_system: params[:tracking_beverage_log][:quantity][:measurement_system])
       temperature = Temperature.create!(degrees: params[:tracking_beverage_log][:temperature][:degrees], scale: params[:tracking_beverage_log][:temperature][:scale])
       @beverage_log = BeverageLog.new(beverage_log_params)
-      binding.break
       if @beverage_log.valid?
         session[:beverage_log] = {
           beverage_id: @beverage_log.beverage_id,

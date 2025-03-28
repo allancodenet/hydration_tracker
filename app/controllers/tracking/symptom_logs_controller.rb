@@ -8,7 +8,6 @@ module Tracking
     def create
       @symptom_log = SymptomLog.new(symptom_log_params)
       if @symptom_log.valid?
-        binding.break
         beverage_params = session[:beverage_log].dup
         quantity = Quantity.find(beverage_params.delete("quantity"))
         temperature = Temperature.find(beverage_params.delete("temperature"))
